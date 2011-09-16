@@ -36,7 +36,7 @@
 //
 
 // We the form is going
-var POST_URL = "cargo.php"
+var POST_URL = "cargo_debug.py"
 
 function sizeByte(bytes){
     var i = 0;
@@ -115,17 +115,18 @@ function fileSelected() {
     xhr.addEventListener("load", uploadComplete, false);
     xhr.addEventListener("error", uploadFailed, false);
     xhr.addEventListener("abort", uploadCanceled, false);
-    xhr.open("POST", POST_URL, false);
+    xhr.open("POST", POST_URL, true);
     //xhr.setRequestHeader("Content-Type", "multipart/form-data");
     xhr.setRequestHeader("X-File-Name", fileInfoName);
     xhr.setRequestHeader("X-File-Size", fileInfoSize);
     xhr.setRequestHeader("X-File-Type", fileInfoType);
     xhr.setRequestHeader("Cache-Control", "no-cache");
     xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
-    xhr.send(fd);
+    //xhr.send(fd);
 
     // Start the updater
     intervalTimer = setInterval(updater, 1000);
+    xhr.send(fd);
 }
 
 function uploadProgress(evt) {
