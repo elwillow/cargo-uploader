@@ -36,7 +36,7 @@
 //
 
 // We the form is going
-var POST_URL = "cargo_debug.py"
+var POST_URL = "cargo.py"
 
 function sizeByte(bytes){
     var i = 0;
